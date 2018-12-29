@@ -1,0 +1,8 @@
+---
+- name: check the docker status
+  hosts: localhost
+  tasks:
+          - name: running the script
+            command: systemctl status docker
+            register: output
+          - debug: var=output.stdout_lines[2]
