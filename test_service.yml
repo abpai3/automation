@@ -1,11 +1,11 @@
 ---
 - name: check the docker status
-  hosts: "{{hostname}}" 
+  hosts: localhost
   tasks:
           - name: running the script
             command: systemctl "{{action}}" "{{service}}"
             register: output
             failed_when: "'FAILED' in output.stderr"
           - debug: var=output.stdout_lines
-          - debug: msg="Requested '{{action}}' for service '{{service}}' on '{{hostname}}' is completed !!"
+          - debug: msg="Requested '{{action}}' for service '{{service}}' on localhost is completed !!"
 
