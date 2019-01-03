@@ -1,6 +1,7 @@
 ---
 - name: check the docker status
   hosts: localhost
+  become: yes
   tasks:
           - name: running the script
             command: sudo systemctl "{{action}}" "{{service}}"
