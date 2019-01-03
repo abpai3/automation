@@ -3,7 +3,7 @@
   hosts: localhost
   become: true
   become_user: root
-  become_method: enable
+  become_method: su
   tasks:
           - name: running the script
             command: systemctl "{{action}}" "{{service}}"
@@ -11,4 +11,3 @@
             failed_when: "'FAILED' in output.stderr"
           - debug: var=output.stdout_lines
           - debug: msg="Requested '{{action}}' for service '{{service}}' on localhost is completed !!"
-
