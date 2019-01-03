@@ -1,12 +1,12 @@
 ---
 - name: check the docker status
   hosts: localhost
+  become: true
+  become_user: root
+  become_method: enable
   tasks:
           - name: running the script
             command: sudo systemctl "{{action}}" "{{service}}"
-            become: true
-            become_user: root
-            become_method: enable
             register: output
             failed_when: "'FAILED' in output.stderr"
           - debug: var=output.stdout_lines
